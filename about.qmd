@@ -2,4 +2,16 @@
 title: "About"
 ---
 
-This blog is built with [Quarto](https://quarto.org/) and deployed to GitHub Pages using GitHub Actions.
+I am Triz, and this blog is where I document what I am building and learning.
+
+## What you will find here
+
+- Practical notes on engineering workflows
+- Quarto and developer tooling tips
+- Short postmortems from real projects
+
+## Stack
+
+- Content: Markdown + Quarto
+- Hosting: GitHub Pages
+- Deployment: GitHub Actions CI

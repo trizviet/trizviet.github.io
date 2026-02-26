@@ -1,4 +1,83 @@
-/* Keep styling minimal for now; customize freely. */
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap");
+
+:root {
+  --bg: #f4f7fb;
+  --bg-grad-a: #e7f3ff;
+  --bg-grad-b: #fff4de;
+  --text: #1d2838;
+  --muted: #4d617c;
+  --accent: #0f6bff;
+  --accent-dark: #0a4dcc;
+  --card: #ffffff;
+  --border: #dce6f4;
+}
+
 body {
-  line-height: 1.6;
+  background: linear-gradient(140deg, var(--bg-grad-a), var(--bg-grad-b)) fixed;
+  color: var(--text);
+  font-family: "Source Sans 3", "Segoe UI", sans-serif;
+  line-height: 1.65;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Fraunces", Georgia, serif;
+  letter-spacing: 0.2px;
+}
+
+.hero {
+  margin: 1rem 0 2rem;
+  padding: 1.3rem 1.4rem;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 10px 26px rgba(24, 57, 107, 0.08);
+}
+
+.hero p {
+  color: var(--muted);
+  margin-bottom: 1rem;
+}
+
+.hero-cta {
+  display: inline-block;
+  text-decoration: none;
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 700;
+}
+
+.hero-cta:hover {
+  background: var(--accent-dark);
+  color: #fff;
+}
+
+.quarto-listing-container-default .listing-item {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.85rem 1rem;
+  margin-bottom: 0.9rem;
+  box-shadow: 0 6px 18px rgba(24, 57, 107, 0.06);
+}
+
+.quarto-listing-category {
+  background: #e9f1ff;
+  color: #164fb5;
+  border-radius: 999px;
+  padding: 0.12rem 0.6rem;
+}
+
+.navbar {
+  backdrop-filter: blur(4px);
+}
+
+@media (max-width: 640px) {
+  .hero {
+    padding: 1rem;
+  }
 }

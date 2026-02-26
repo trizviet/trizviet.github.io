@@ -1,11 +1,22 @@
 ---
-title: "Blog"
+title: "Notes on Building and Learning"
+page-layout: full
 listing:
   contents: posts
   sort: "date desc"
   type: default
+  feed: true
   categories: true
+  filter-ui: true
   fields: [title, date, categories, description]
 ---
 
-Welcome to my Quarto blog.
+::: {.hero}
+## Technical writing, project notes, and practical guides
+
+I use this blog to publish concise write-ups on tools, workflows, and lessons learned while building software.
+
+[Read the latest post](posts/welcome/index.qmd){.hero-cta}
+:::
+
+## Latest Posts
