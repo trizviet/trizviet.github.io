@@ -1,0 +1,5 @@
+---
+title: "About"
+---
+
+This blog is built with [Quarto](https://quarto.org/) and deployed to GitHub Pages using GitHub Actions.

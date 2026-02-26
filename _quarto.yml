@@ -1,0 +1,22 @@
+project:
+  type: website
+  output-dir: _site
+
+website:
+  title: "My Quarto Blog"
+  navbar:
+    right:
+      - text: Home
+        href: index.qmd
+      - text: About
+        href: about.qmd
+  page-footer:
+    center: "Copyright 2026"
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+
+editor: visual

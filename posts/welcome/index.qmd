@@ -1,0 +1,15 @@
+---
+title: "Welcome"
+author: "Your Name"
+date: "2026-02-26"
+categories: [intro, quarto]
+description: "First post on my new Quarto blog."
+---
+
+This is my first post.
+
+## Why Quarto?
+
+- Simple markdown authoring
+- Great for blogs and technical content
+- Easy CI/CD with GitHub Actions
