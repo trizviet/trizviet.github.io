@@ -2,7 +2,7 @@
 title: "Notes on Building and Learning"
 page-layout: full
 listing:
-  contents: posts
+  contents: posts/**/index.qmd
   sort: "date desc"
   type: default
   feed: true
