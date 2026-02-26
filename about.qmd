@@ -2,16 +2,21 @@
 title: "About"
 ---
 
-I am Triz, and this blog is where I document what I am building and learning.
+I am Triz.
+
+This blog is where I break down real business and technology problems using the TRIZ 3-step method, then turn them into practical solution concepts.
+
+Most posts are case studies from companies like Starbucks, LEGO, Patagonia, Cadillac, Shake Shack, SolarCity, TD Bank, and Chegg. The goal is simple: make structured innovation thinking concrete and usable.
 
 ## What you will find here
 
-- Practical notes on engineering workflows
-- Quarto and developer tooling tips
-- Short postmortems from real projects
+- TRIZ case studies on strategy, operations, and innovation
+- Contradiction analysis (technical + physical) and IFR thinking
+- Practical solution concepts you can adapt to your own context
+- Occasional notes about tooling, Quarto, and publishing workflow
 
-## Stack
+## Writing style
 
-- Content: Markdown + Quarto
-- Hosting: GitHub Pages
-- Deployment: GitHub Actions CI
+- Practical over theoretical
+- Framework-driven, with clear steps
+- Focused on reusable thinking patterns, not abstract inspiration
