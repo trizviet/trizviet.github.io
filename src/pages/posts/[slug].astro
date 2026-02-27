@@ -21,7 +21,19 @@ const formattedDate = new Intl.DateTimeFormat("en-CA", {
 ---
 
 <PostLayout title={post.data.title} description={post.data.description}>
-  <h1>{post.data.title}</h1>
-  <p class="meta">{formattedDate}</p>
+  <header class="article-header">
+    <p class="meta-row">
+      <span class="meta-type">Post</span>
+      <span class="meta">{formattedDate}</span>
+    </p>
+    <h1>{post.data.title}</h1>
+    {post.data.categories.length > 0 && (
+      <p class="badges">
+        {post.data.categories.map((category) => (
+          <span class="badge">{category}</span>
+        ))}
+      </p>
+    )}
+  </header>
   <Content />
 </PostLayout>

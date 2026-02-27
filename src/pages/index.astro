@@ -29,21 +29,27 @@ const latestHref = items[0] ? getHref(items[0]) : "/";
 
 <BaseLayout title="Notes on Building and Learning">
   <section class="hero">
-    <h2>Technical writing, project notes, and practical guides</h2>
-    <p>
+    <p class="hero-kicker">Case studies and practical frameworks</p>
+    <h1>Technical writing, project notes, and practical guides</h1>
+    <p class="hero-lead">
       I use this blog to publish concise write-ups on tools, workflows, and lessons
       learned while building software.
     </p>
-    <a class="hero-cta" href={latestHref}>Read the latest post</a>
+    <div class="hero-actions">
+      <a class="hero-cta" href={latestHref}>Read the latest post</a>
+    </div>
   </section>
 
   <section>
     <h2>Latest Posts</h2>
     <ul class="post-list">
-      {items.map((entry) => (
-        <li class="post-card">
+      {items.map((entry, idx) => (
+        <li class="post-card" style={`--stagger:${idx};`}>
+          <p class="meta-row">
+            <span class="meta-type">{entry.collection === "welcome" ? "Welcome" : "Post"}</span>
+            <span class="meta">{formatDate(entry.data.date)}</span>
+          </p>
           <h3><a href={getHref(entry)}>{entry.data.title}</a></h3>
-          <p class="meta">{formatDate(entry.data.date)}</p>
           {entry.data.description && <p>{entry.data.description}</p>}
           {entry.data.categories.length > 0 && (
             <p class="badges">

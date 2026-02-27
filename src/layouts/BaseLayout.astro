@@ -10,6 +10,10 @@ const {
   title = "Triz Blog",
   description = "Notes on engineering, tools, and learning in public."
 } = Astro.props;
+
+const pathname = Astro.url.pathname;
+const isHome = pathname === "/";
+const isAbout = pathname.startsWith("/about");
 ---
 
 <html lang="en">
@@ -22,16 +26,21 @@ const {
   <body>
     <header class="site-header">
       <div class="container header-inner">
-        <a class="brand" href="/">Triz Blog</a>
+        <a class="brand" href="/">
+          <span class="brand-mark">TRIZ</span>
+          <span class="brand-text">Triz Blog</span>
+        </a>
         <nav class="nav-links" aria-label="Main navigation">
-          <a href="/">Home</a>
-          <a href="/about">About</a>
+          <a class={isHome ? "is-active" : undefined} href="/">Home</a>
+          <a class={isAbout ? "is-active" : undefined} href="/about">About</a>
         </nav>
       </div>
     </header>
     <main class="container main-content">
       <slot />
     </main>
-    <footer class="container site-footer">Built with Astro</footer>
+    <footer class="container site-footer">
+      <p>Built with Astro. Practical notes on TRIZ, strategy, and execution.</p>
+    </footer>
   </body>
 </html>
