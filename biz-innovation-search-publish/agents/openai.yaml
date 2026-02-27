@@ -1,0 +1,4 @@
+interface:
+  display_name: "Biz Innovation Search Publish"
+  short_description: "Solve with fusion + web evidence, then publish"
+  default_prompt: "Solve this business problem using biz-innovation-fusion with web validation, then publish via commit/push"
