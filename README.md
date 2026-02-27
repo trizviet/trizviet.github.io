@@ -1,30 +1,49 @@
-# Quarto Blog on GitHub Pages
+# Astro Blog on GitHub Pages
 
-This repository is configured as a Quarto blog and deployed with GitHub Actions.
+This repository is now an Astro-based static blog, deployed with GitHub Actions.
 
 ## Local development
 
-1. Install Quarto: https://quarto.org/docs/get-started/
-2. Preview locally:
+1. Install Node.js 20+.
+2. Install dependencies:
 
 ```bash
-quarto preview
+npm install
+```
+
+3. Start local dev server:
+
+```bash
+npm run dev
 ```
 
 ## Create a new post
 
-Add a new folder under `posts/` with an `index.qmd` file containing front matter, for example:
+Add a Markdown file to one of these collections:
+
+- `src/content/posts/<slug>.md`
+- `src/content/welcome/<slug>.md`
+
+Example frontmatter:
 
 ```yaml
 ---
 title: "My New Post"
-date: "2026-02-26"
+date: "2026-02-27"
 categories: [notes]
+description: "Short summary"
 ---
+```
+
+## Build and preview
+
+```bash
+npm run build
+npm run preview
 ```
 
 ## Deployment
 
 - Push to `main`.
-- GitHub Action `.github/workflows/publish.yml` will render and deploy to GitHub Pages.
-- In GitHub repo settings, set Pages source to **GitHub Actions**.
+- GitHub Action `.github/workflows/publish.yml` will build with Astro and deploy `dist/` to GitHub Pages.
+- In repository settings, set Pages source to **GitHub Actions**.

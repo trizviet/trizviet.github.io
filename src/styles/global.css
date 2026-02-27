@@ -12,7 +12,12 @@
   --border: #dce6f4;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 body {
+  margin: 0;
   background: linear-gradient(140deg, var(--bg-grad-a), var(--bg-grad-b)) fixed;
   color: var(--text);
   font-family: "Source Sans 3", "Segoe UI", sans-serif;
@@ -25,6 +30,48 @@ h3,
 h4 {
   font-family: "Fraunces", Georgia, serif;
   letter-spacing: 0.2px;
+}
+
+a {
+  color: var(--accent-dark);
+}
+
+.container {
+  width: min(920px, 92vw);
+  margin: 0 auto;
+}
+
+.site-header {
+  backdrop-filter: blur(4px);
+  border-bottom: 1px solid rgba(220, 230, 244, 0.7);
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 64px;
+}
+
+.brand {
+  text-decoration: none;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.nav-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.main-content {
+  padding: 1.2rem 0 2.4rem;
 }
 
 .hero {
@@ -56,28 +103,68 @@ h4 {
   color: #fff;
 }
 
-.quarto-listing-container-default .listing-item {
+.post-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.9rem;
+}
+
+.post-card {
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: 0.85rem 1rem;
-  margin-bottom: 0.9rem;
   box-shadow: 0 6px 18px rgba(24, 57, 107, 0.06);
 }
 
-.quarto-listing-category {
+.post-card h3 {
+  margin: 0 0 0.2rem;
+  font-size: 1.15rem;
+}
+
+.meta {
+  margin: 0.1rem 0 0.6rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.badge {
   background: #e9f1ff;
   color: #164fb5;
   border-radius: 999px;
   padding: 0.12rem 0.6rem;
+  font-size: 0.86rem;
 }
 
-.navbar {
-  backdrop-filter: blur(4px);
+.article {
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.2rem 1.2rem;
+  box-shadow: 0 10px 26px rgba(24, 57, 107, 0.08);
+}
+
+.site-footer {
+  color: var(--muted);
+  border-top: 1px solid rgba(220, 230, 244, 0.7);
+  padding: 1.2rem 0 2rem;
+  font-size: 0.95rem;
 }
 
 @media (max-width: 640px) {
   .hero {
+    padding: 1rem;
+  }
+
+  .article {
     padding: 1rem;
   }
 }

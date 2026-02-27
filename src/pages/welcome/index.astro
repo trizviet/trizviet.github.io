@@ -1,0 +1,24 @@
+---
+import { getEntry, render } from "astro:content";
+import PostLayout from "../../layouts/PostLayout.astro";
+
+const welcomeIntro = await getEntry("welcome", "index");
+
+if (!welcomeIntro) {
+  throw new Error("Missing required content file: src/content/welcome/index.md");
+}
+
+const { Content } = await render(welcomeIntro);
+
+const formattedDate = new Intl.DateTimeFormat("en-CA", {
+  year: "numeric",
+  month: "short",
+  day: "2-digit"
+}).format(welcomeIntro.data.date);
+---
+
+<PostLayout title={welcomeIntro.data.title} description={welcomeIntro.data.description}>
+  <h1>{welcomeIntro.data.title}</h1>
+  <p class="meta">{formattedDate}</p>
+  <Content />
+</PostLayout>

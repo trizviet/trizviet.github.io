@@ -1,0 +1,59 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const posts = await getCollection("posts");
+const welcome = await getCollection("welcome");
+
+const items = [...posts, ...welcome].sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+
+const formatDate = (date: Date) =>
+  new Intl.DateTimeFormat("en-CA", {
+    year: "numeric",
+    month: "short",
+    day: "2-digit"
+  }).format(date);
+
+const getHref = (entry: (typeof items)[number]) => {
+  if (entry.collection === "welcome" && entry.slug === "index") {
+    return "/welcome/";
+  }
+
+  return `/${entry.collection}/${entry.slug}/`;
+};
+
+const latestHref = items[0] ? getHref(items[0]) : "/";
+---
+
+<BaseLayout title="Notes on Building and Learning">
+  <section class="hero">
+    <h2>Technical writing, project notes, and practical guides</h2>
+    <p>
+      I use this blog to publish concise write-ups on tools, workflows, and lessons
+      learned while building software.
+    </p>
+    <a class="hero-cta" href={latestHref}>Read the latest post</a>
+  </section>
+
+  <section>
+    <h2>Latest Posts</h2>
+    <ul class="post-list">
+      {items.map((entry) => (
+        <li class="post-card">
+          <h3><a href={getHref(entry)}>{entry.data.title}</a></h3>
+          <p class="meta">{formatDate(entry.data.date)}</p>
+          {entry.data.description && <p>{entry.data.description}</p>}
+          {entry.data.categories.length > 0 && (
+            <p class="badges">
+              {entry.data.categories.map((category) => (
+                <span class="badge">{category}</span>
+              ))}
+            </p>
+          )}
+        </li>
+      ))}
+    </ul>
+  </section>
+</BaseLayout>

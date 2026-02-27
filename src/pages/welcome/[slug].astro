@@ -1,0 +1,31 @@
+---
+import { getCollection, render } from "astro:content";
+import PostLayout from "../../layouts/PostLayout.astro";
+
+export async function getStaticPaths() {
+  const welcomePosts = await getCollection(
+    "welcome",
+    ({ slug }) => slug !== "index"
+  );
+
+  return welcomePosts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post }
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const formattedDate = new Intl.DateTimeFormat("en-CA", {
+  year: "numeric",
+  month: "short",
+  day: "2-digit"
+}).format(post.data.date);
+---
+
+<PostLayout title={post.data.title} description={post.data.description}>
+  <h1>{post.data.title}</h1>
+  <p class="meta">{formattedDate}</p>
+  <Content />
+</PostLayout>

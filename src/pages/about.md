@@ -1,5 +1,7 @@
 ---
-title: "About"
+layout: ../layouts/BaseLayout.astro
+title: About
+description: About this TRIZ/ARIZ focused blog.
 ---
 
 I am Triz.
