@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from "astro:content";
 import PostLayout from "../../layouts/PostLayout.astro";
+import { toCategorySlug } from "../../lib/categories";
 
 export async function getStaticPaths() {
   const welcomePosts = await getCollection(
@@ -34,7 +35,9 @@ const formattedDate = new Intl.DateTimeFormat("en-CA", {
     {post.data.categories.length > 0 && (
       <p class="badges">
         {post.data.categories.map((category) => (
-          <span class="badge">{category}</span>
+          <a class="badge badge-link" href={`/categories/${toCategorySlug(category)}/`}>
+            {category}
+          </a>
         ))}
       </p>
     )}

@@ -1,0 +1,33 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { collectCategories } from "../../lib/categories";
+import type { ArticleEntry } from "../../lib/entries";
+
+const posts = await getCollection("posts");
+const welcome = await getCollection("welcome");
+
+const items: ArticleEntry[] = [...posts, ...welcome];
+const categories = collectCategories(items);
+---
+
+<BaseLayout title="Categories">
+  <section class="hero hero-compact">
+    <p class="hero-kicker">Catalog</p>
+    <h1>Categories</h1>
+    <p class="hero-lead">Browse topics and jump directly to related posts.</p>
+  </section>
+
+  {categories.length === 0 ? (
+    <p class="empty-state">No categories available yet.</p>
+  ) : (
+    <ul class="category-grid">
+      {categories.map((category) => (
+        <li class="category-card">
+          <a class="category-name" href={`/categories/${category.slug}/`}>{category.name}</a>
+          <p class="category-count">{category.count} post{category.count === 1 ? "" : "s"}</p>
+        </li>
+      ))}
+    </ul>
+  )}
+</BaseLayout>

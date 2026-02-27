@@ -1,0 +1,82 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { collectCategories, toCategorySlug } from "../../lib/categories";
+import { getEntryHref, type ArticleEntry } from "../../lib/entries";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("posts");
+  const welcome = await getCollection("welcome");
+  const items: ArticleEntry[] = [...posts, ...welcome];
+  const categories = collectCategories(items);
+
+  return categories.map((category) => ({
+    params: { slug: category.slug },
+    props: { categoryName: category.name }
+  }));
+}
+
+const { slug, categoryName } = Astro.props as { slug: string; categoryName: string };
+
+const posts = await getCollection("posts");
+const welcome = await getCollection("welcome");
+
+const items: ArticleEntry[] = [...posts, ...welcome];
+
+const filteredItems = items
+  .filter((entry) =>
+    entry.data.categories.some((category) => toCategorySlug(category) === slug)
+  )
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const formatDate = (date: Date) =>
+  new Intl.DateTimeFormat("en-CA", {
+    year: "numeric",
+    month: "short",
+    day: "2-digit"
+  }).format(date);
+---
+
+<BaseLayout title={`Category: ${categoryName}`}>
+  <section class="hero hero-compact">
+    <p class="hero-kicker">Category</p>
+    <h1>{categoryName}</h1>
+    <p class="hero-lead">
+      {filteredItems.length} post{filteredItems.length === 1 ? "" : "s"} tagged in this category.
+    </p>
+  </section>
+
+  {filteredItems.length === 0 ? (
+    <p class="empty-state">No posts found for this category.</p>
+  ) : (
+    <ul class="post-list">
+      {filteredItems.map((entry, idx) => (
+        <li class="post-card" style={`--stagger:${idx};`}>
+          <p class="meta-row">
+            <span class="meta-type">{entry.collection === "welcome" ? "Welcome" : "Post"}</span>
+            <span class="meta">{formatDate(entry.data.date)}</span>
+          </p>
+          <h3><a href={getEntryHref(entry)}>{entry.data.title}</a></h3>
+          {entry.data.description && <p>{entry.data.description}</p>}
+          {entry.data.categories.length > 0 && (
+            <p class="badges">
+              {entry.data.categories.map((category) => {
+                const categorySlug = toCategorySlug(category);
+                const isCurrent = categorySlug === slug;
+
+                return (
+                  <a
+                    class={`badge badge-link ${isCurrent ? "is-current" : ""}`}
+                    href={`/categories/${categorySlug}/`}
+                  >
+                    {category}
+                  </a>
+                );
+              })}
+            </p>
+          )}
+        </li>
+      ))}
+    </ul>
+  )}
+</BaseLayout>

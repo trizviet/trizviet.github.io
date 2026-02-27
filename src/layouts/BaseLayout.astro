@@ -14,6 +14,7 @@ const {
 const pathname = Astro.url.pathname;
 const isHome = pathname === "/";
 const isAbout = pathname.startsWith("/about");
+const isCategories = pathname.startsWith("/categories");
 ---
 
 <html lang="en">
@@ -32,6 +33,7 @@ const isAbout = pathname.startsWith("/about");
         </a>
         <nav class="nav-links" aria-label="Main navigation">
           <a class={isHome ? "is-active" : undefined} href="/">Home</a>
+          <a class={isCategories ? "is-active" : undefined} href="/categories">Categories</a>
           <a class={isAbout ? "is-active" : undefined} href="/about">About</a>
         </nav>
       </div>

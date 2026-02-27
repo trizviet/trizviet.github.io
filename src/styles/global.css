@@ -210,6 +210,60 @@ p {
   box-shadow: 0 16px 30px rgba(13, 133, 100, 0.3);
 }
 
+.hero-compact {
+  margin-bottom: 1.4rem;
+}
+
+.section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.7rem;
+  margin-bottom: 0.8rem;
+}
+
+.section-link {
+  display: inline-flex;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.category-grid {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.8rem;
+}
+
+.category-card {
+  border: 1px solid var(--line);
+  border-radius: 0.9rem;
+  background: rgba(255, 255, 253, 0.88);
+  padding: 0.8rem 0.88rem;
+  box-shadow: 0 9px 24px rgba(26, 47, 43, 0.06);
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.category-card:hover {
+  transform: translateY(-1px);
+  border-color: #bfd2c2;
+  box-shadow: 0 12px 28px rgba(26, 47, 43, 0.1);
+}
+
+.category-name {
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.category-count {
+  margin-top: 0.25rem;
+  margin-bottom: 0;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+
 .post-list {
   list-style: none;
   padding: 0;
@@ -281,6 +335,22 @@ p {
   font-weight: 650;
 }
 
+.badge-link {
+  text-decoration: none;
+  border: 1px solid transparent;
+  transition: all 170ms ease;
+}
+
+.badge-link:hover {
+  border-color: #b4ccba;
+  background: #e5efe0;
+}
+
+.badge-link.is-current {
+  border-color: #89b9a0;
+  background: #dcece0;
+}
+
 .article {
   border: 1px solid var(--line);
   border-radius: 1.2rem;
@@ -310,6 +380,14 @@ p {
 .article img {
   max-width: 100%;
   border-radius: 0.8rem;
+}
+
+.empty-state {
+  border: 1px dashed var(--line);
+  border-radius: 0.9rem;
+  padding: 1rem;
+  color: var(--ink-soft);
+  background: rgba(255, 255, 253, 0.75);
 }
 
 .site-footer {
@@ -355,6 +433,14 @@ p {
     height: 4.7rem;
     top: 0.9rem;
     right: 0.9rem;
+  }
+
+  .section-head {
+    align-items: baseline;
+  }
+
+  .category-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .post-card {

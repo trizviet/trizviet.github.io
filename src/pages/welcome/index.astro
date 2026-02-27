@@ -1,6 +1,7 @@
 ---
 import { getEntry, render } from "astro:content";
 import PostLayout from "../../layouts/PostLayout.astro";
+import { toCategorySlug } from "../../lib/categories";
 
 const welcomeIntro = await getEntry("welcome", "index");
 
@@ -27,7 +28,9 @@ const formattedDate = new Intl.DateTimeFormat("en-CA", {
     {welcomeIntro.data.categories.length > 0 && (
       <p class="badges">
         {welcomeIntro.data.categories.map((category) => (
-          <span class="badge">{category}</span>
+          <a class="badge badge-link" href={`/categories/${toCategorySlug(category)}/`}>
+            {category}
+          </a>
         ))}
       </p>
     )}
